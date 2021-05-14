@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-14 Fri 19:08 -->
+<!-- 2021-05-14 Fri 19:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Setup for org-roam and its compatriots</title>
@@ -202,44 +202,44 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9d85e67">Zettelkasten</a>
+<li><a href="#org8f6c0f3">Zettelkasten</a>
 <ul>
-<li><a href="#org62f5d0d">Fleeting notes</a></li>
-<li><a href="#org792bc89">Permanent notes</a>
+<li><a href="#orgd348f4d">Fleeting notes</a></li>
+<li><a href="#org4d1d3b9">Permanent notes</a>
 <ul>
-<li><a href="#orgbe9a2f7">Literature notes</a></li>
-<li><a href="#org312f8ec">Concept notes</a></li>
+<li><a href="#org4216890">Literature notes</a></li>
+<li><a href="#orga5777f6">Concept notes</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org307b86c">Installation</a></li>
-<li><a href="#org8a63c3a">Getting started</a></li>
-<li><a href="#org9a8925b">Files</a>
+<li><a href="#orged9a6a4">Installation</a></li>
+<li><a href="#orgf108b1a">Getting started</a></li>
+<li><a href="#orgb4029e8">Files</a>
 <ul>
-<li><a href="#org7d3a0a7">File Titles</a></li>
-<li><a href="#orgfdaec21">File Tags</a></li>
-<li><a href="#org391fd4a">File Refer</a></li>
+<li><a href="#org5fed205">File Titles</a></li>
+<li><a href="#org69b95e8">File Tags</a></li>
+<li><a href="#orgb33a9c8">File Refer</a></li>
 </ul>
 </li>
-<li><a href="#org980a018">Templates</a></li>
-<li><a href="#org98b8150">Inserting Links</a></li>
-<li><a href="#org50e4c91">Graphing</a></li>
-<li><a href="#org000e09c">Roam protocol</a>
+<li><a href="#org8d29bca">Templates</a></li>
+<li><a href="#org04498c8">Inserting Links</a></li>
+<li><a href="#org5787b03">Graphing</a></li>
+<li><a href="#orgb6a6477">Roam protocol</a>
 <ul>
-<li><a href="#org960d46c">The <code>roam-ref</code> Protocol</a></li>
+<li><a href="#orga49304e">The <code>roam-ref</code> Protocol</a></li>
 </ul>
 </li>
-<li><a href="#org42b7e3c">Daily-notes</a></li>
-<li><a href="#orgd493eca">Diagnosing and Repairing Files</a></li>
-<li><a href="#org12cf8fe">Finding Unlinked References</a></li>
-<li><a href="#org40d7c54"><span class="todo NEXT">NEXT</span> Deft, org-noter, org-roam-bibtex</a>
+<li><a href="#org24ac063">Daily-notes</a></li>
+<li><a href="#orgf812705">Diagnosing and Repairing Files</a></li>
+<li><a href="#org6e1a922">Finding Unlinked References</a></li>
+<li><a href="#org041df02"><span class="todo NEXT">NEXT</span> Deft, org-noter, org-roam-bibtex</a>
 <ul>
-<li><a href="#org71f8f26">Deft</a></li>
+<li><a href="#org74af671">Deft</a></li>
 </ul>
 </li>
-<li><a href="#org84623c4">Keybindings for <code>org-roam</code> functions</a></li>
-<li><a href="#org4308225"><code>use-package</code> code block</a></li>
+<li><a href="#org553d2ec">Keybindings for <code>org-roam</code> functions</a></li>
+<li><a href="#org2d591db"><code>use-package</code> code block</a></li>
 </ul>
 </div>
 </div>
@@ -251,43 +251,43 @@
 <code>org-roam</code> is an Emacs package that improves note-taking process in <code>org-mode</code>. Per the manual, <i>Org-roam is a tool for network thought</i>. I've been trying to get into the habit of note-taking and the result of extreme boredom led me to set this up in my system after hearing a lot of good things about it. The complete config block for init.el can be found at the end.
 </p>
 
-<div id="outline-container-org9d85e67" class="outline-2">
-<h2 id="org9d85e67">Zettelkasten</h2>
-<div class="outline-text-2" id="text-org9d85e67">
+<div id="outline-container-org8f6c0f3" class="outline-2">
+<h2 id="org8f6c0f3">Zettelkasten</h2>
+<div class="outline-text-2" id="text-org8f6c0f3">
 <p>
 <code>Zettelkasten</code> is a German word, and the name of a note taking system that was developed by a German sociologist <b>Niklas Luhmann</b> who used to take notes on cards and then put them into a slip-box. The idea is that, with enough notes linked to each other, one can come up with various ideas to think, write, watch about. This  introduction is, by no means, a good introduction and one should definitely read about Zettelkasten on their own if they find it interesting. <code>org-roam</code> aims to be the slip-box, where every note is a zettel/card of its own.
 </p>
 </div>
 
-<div id="outline-container-org62f5d0d" class="outline-3">
-<h3 id="org62f5d0d">Fleeting notes</h3>
-<div class="outline-text-3" id="text-org62f5d0d">
+<div id="outline-container-orgd348f4d" class="outline-3">
+<h3 id="orgd348f4d">Fleeting notes</h3>
+<div class="outline-text-3" id="text-orgd348f4d">
 <p>
 Notes that are essentially short quick reminders of information or ideas that need to be processed later on, or trashed. I have tried using <code>org-capture</code> for this with a decent amount of success but I plan to try <code>org-roam</code>'s daily notes feature first to have a comparison. These kinds of notes are a central inbox that are to be further refiled and processed into permanent notes.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org792bc89" class="outline-3">
-<h3 id="org792bc89">Permanent notes</h3>
-<div class="outline-text-3" id="text-org792bc89">
+<div id="outline-container-org4d1d3b9" class="outline-3">
+<h3 id="org4d1d3b9">Permanent notes</h3>
+<div class="outline-text-3" id="text-org4d1d3b9">
 <p>
 Permanent notes form the basic structure of the network of notes. They are full-fledged notes that are supposed to be self-explanatory, and can be of two types: <b>literature notes</b> and <b>concept notes</b>.
 </p>
 </div>
 
-<div id="outline-container-orgbe9a2f7" class="outline-4">
-<h4 id="orgbe9a2f7">Literature notes</h4>
-<div class="outline-text-4" id="text-orgbe9a2f7">
+<div id="outline-container-org4216890" class="outline-4">
+<h4 id="org4216890">Literature notes</h4>
+<div class="outline-text-4" id="text-org4216890">
 <p>
 Each note is a condensed summary of a particular source of reading (eg. book, website, paper etc.). It can also contain any annotations that are made during the reading. These notes provide an easy access to sift through past readings, and provides a way to retain more consumed information.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org312f8ec" class="outline-4">
-<h4 id="org312f8ec">Concept notes</h4>
-<div class="outline-text-4" id="text-org312f8ec">
+<div id="outline-container-orga5777f6" class="outline-4">
+<h4 id="orga5777f6">Concept notes</h4>
+<div class="outline-text-4" id="text-orga5777f6">
 <p>
 Concept notes are more in-depth and require more care in authoring. They need to be detailed notes on a particular concept that one can refer to whenever required. They can then be linked to various fleeting or literature notes, which provides a better network of view for that particular concept.
 </p>
@@ -296,9 +296,9 @@ Concept notes are more in-depth and require more care in authoring. They need to
 </div>
 </div>
 
-<div id="outline-container-org307b86c" class="outline-2">
-<h2 id="org307b86c">Installation</h2>
-<div class="outline-text-2" id="text-org307b86c">
+<div id="outline-container-orged9a6a4" class="outline-2">
+<h2 id="orged9a6a4">Installation</h2>
+<div class="outline-text-2" id="text-orged9a6a4">
 <p>
 I used the <code>straight.el</code> package manager, with the <code>use-package</code> package as a configuration manager to install and customize <code>org-roam</code> and other packages. This can be done by running the following
 </p>
@@ -315,9 +315,9 @@ I used the <code>straight.el</code> package manager, with the <code>use-package<
 </div>
 </div>
 
-<div id="outline-container-org8a63c3a" class="outline-2">
-<h2 id="org8a63c3a">Getting started</h2>
-<div class="outline-text-2" id="text-org8a63c3a">
+<div id="outline-container-orgf108b1a" class="outline-2">
+<h2 id="orgf108b1a">Getting started</h2>
+<div class="outline-text-2" id="text-orgf108b1a">
 <p>
 The first step to start using <code>org-roam</code> is to set the <code>org-roam-directory</code> variable. This directory will contain all the notes that are created during the time of using <code>org-roam</code>. We will set this using the <code>:config</code> block in <code>use-package</code>
 </p>
@@ -362,22 +362,22 @@ To insert links in a note, use <code>M-x org-roam-insert</code>. This will bring
 </div>
 </div>
 
-<div id="outline-container-org9a8925b" class="outline-2">
-<h2 id="org9a8925b">Files</h2>
-<div class="outline-text-2" id="text-org9a8925b">
+<div id="outline-container-orgb4029e8" class="outline-2">
+<h2 id="orgb4029e8">Files</h2>
+<div class="outline-text-2" id="text-orgb4029e8">
 <p>
 While the bulk of <code>org-roam</code>'s functionality is built up on vanilla org, it adds some extensions and keywords to support additional functionality. 
 </p>
 </div>
 
-<div id="outline-container-org7d3a0a7" class="outline-3">
-<h3 id="org7d3a0a7">File Titles</h3>
-<div class="outline-text-3" id="text-org7d3a0a7">
+<div id="outline-container-org5fed205" class="outline-3">
+<h3 id="org5fed205">File Titles</h3>
+<div class="outline-text-3" id="text-org5fed205">
 <p>
 Each note needs to be prescribed with a title (duh?). This allows quick searching of notes. <code>org-roam</code> adds to the standard <code>+title</code> keyword in org-mode by using an new keyword called <code>#+roam_alias</code>. These aliases are space-delimited quoted strings that can also be used to refer the note while using <code>org-roam</code>. It also provides support for extracting title from the first headline in the file. The default action is to determine titles using <code>#+title</code> and <code>#+roam_alias</code> and if <code>#+title</code> isn't available, then fallback to the first headline. This is useful in topics like "World War 2" where it can also be referred to as "WW2" or "World War II" or such.
 </p>
 
-<pre class="example" id="org6067663">
+<pre class="example" id="orgf1ee9b7">
 #+title: World War 2
 #+roam_alias: "WWII" "WW2" "World War II"
 </pre>
@@ -388,9 +388,9 @@ Title extraction can be customized using the <code>org-roam-title-sources</code>
 </div>
 </div>
 
-<div id="outline-container-orgfdaec21" class="outline-3">
-<h3 id="orgfdaec21">File Tags</h3>
-<div class="outline-text-3" id="text-orgfdaec21">
+<div id="outline-container-org69b95e8" class="outline-3">
+<h3 id="org69b95e8">File Tags</h3>
+<div class="outline-text-3" id="text-org69b95e8">
 <p>
 Tags are used as meta-data for files. They facilitate interaction with notes where titles are insufficient. It also provides a good interface for categorization of notes, especially while searching through all notes. By default, tags are extracted from the <code>#+roam_tags</code> property. Tags are space-delimited quoted strings. To customize this behaviour, check <code>org-roam-tag-sources</code> variable.
 </p>
@@ -401,9 +401,9 @@ Tags are used as meta-data for files. They facilitate interaction with notes whe
 </div>
 </div>
 
-<div id="outline-container-org391fd4a" class="outline-3">
-<h3 id="org391fd4a">File Refer</h3>
-<div class="outline-text-3" id="text-org391fd4a">
+<div id="outline-container-orgb33a9c8" class="outline-3">
+<h3 id="orgb33a9c8">File Refer</h3>
+<div class="outline-text-3" id="text-orgb33a9c8">
 <p>
 Refs are unique identifiers for files. They are declared using the <code>+roam_key</code> and show up as a Ref Backlink in the org-roam link list.
 </p>
@@ -411,9 +411,9 @@ Refs are unique identifiers for files. They are declared using the <code>+roam_k
 </div>
 </div>
 
-<div id="outline-container-org980a018" class="outline-2">
-<h2 id="org980a018">Templates</h2>
-<div class="outline-text-2" id="text-org980a018">
+<div id="outline-container-org8d29bca" class="outline-2">
+<h2 id="org8d29bca">Templates</h2>
+<div class="outline-text-2" id="text-org8d29bca">
 <p>
 Org-roam extends the <code>org-capture</code> capabilities for its templating system. Org-roam's capture templates are not completely compatible with <code>org-capture</code>, hence, to modify the templates, use the <code>org-roam-capture-templates</code>. An example template is shown below. This can be added in the <code>:config</code> section of the <code>use-package</code> configuration.
 </p>
@@ -436,9 +436,9 @@ Org-roam extends the <code>org-capture</code> capabilities for its templating sy
 </div>
 </div>
 
-<div id="outline-container-org98b8150" class="outline-2">
-<h2 id="org98b8150">Inserting Links</h2>
-<div class="outline-text-2" id="text-org98b8150">
+<div id="outline-container-org04498c8" class="outline-2">
+<h2 id="org04498c8">Inserting Links</h2>
+<div class="outline-text-2" id="text-org04498c8">
 <p>
 <code>file</code> links for files and <code>id</code> links for headlines are preferred as they ensure that the links will work even without <code>org-roam</code>. <code>file</code> links can be inserted using <code>org-roam-insert</code> whereas links to headlines can be inserted by navigating to the headline and calling <code>org-store-link</code> to store an ID and link into the org-roam database. That link can then be inserted via <code>org-insert-link</code>.
 </p>
@@ -455,9 +455,9 @@ Org-roam also extends org linking syntax by adding <code>roam</code> links. Org-
 </div>
 </div>
 
-<div id="outline-container-org50e4c91" class="outline-2">
-<h2 id="org50e4c91">Graphing</h2>
-<div class="outline-text-2" id="text-org50e4c91">
+<div id="outline-container-org5787b03" class="outline-2">
+<h2 id="org5787b03">Graphing</h2>
+<div class="outline-text-2" id="text-org5787b03">
 <p>
 <code>org-roam-server</code> is basically a web application to visualize the org-roam database. It needs to be installed separately and can be done easily using <code>straight.el</code> and <code>use-package</code>
 </p>
@@ -487,9 +487,9 @@ Org-roam also extends org linking syntax by adding <code>roam</code> links. Org-
 </p>
 </div>
 </div>
-<div id="outline-container-org000e09c" class="outline-2">
-<h2 id="org000e09c">Roam protocol</h2>
-<div class="outline-text-2" id="text-org000e09c">
+<div id="outline-container-orgb6a6477" class="outline-2">
+<h2 id="orgb6a6477">Roam protocol</h2>
+<div class="outline-text-2" id="text-orgb6a6477">
 <p>
 To enable org-roam's protocol extensions, add the following to emacs init file
 </p>
@@ -504,7 +504,7 @@ To enable org-roam's protocol extensions, add the following to emacs init file
 I had to make a desktop application file for <code>emacsclient</code> to use <code>org-protocol</code>. It can be made on Linux platforms by creating a file in <code>~/.local/share/applications/</code> directory. An example file is shown below
 </p>
 
-<pre class="example" id="orgd46e34d">
+<pre class="example" id="orgdf404e2">
 [Desktop Entry]
 Name=Org-Protocol
 Exec=emacsclient %u
@@ -515,9 +515,9 @@ MimeType=x-scheme-handle/org-protocol
 </pre>
 </div>
 
-<div id="outline-container-org960d46c" class="outline-3">
-<h3 id="org960d46c">The <code>roam-ref</code> Protocol</h3>
-<div class="outline-text-3" id="text-org960d46c">
+<div id="outline-container-orga49304e" class="outline-3">
+<h3 id="orga49304e">The <code>roam-ref</code> Protocol</h3>
+<div class="outline-text-3" id="text-orga49304e">
 <p>
 This protocol finds or creates a new note with a given <code>roam_key</code>. This is one of the most appealing features of <code>org-roam</code> for me. I'm guessing that this in conjunction with Zotero will make my note-taking life much easier on the web. To use this, a bookmarklet needs to be created in the browser. For my choice, that is currently Firefox. The steps to create a bookmarklet are
 </p>
@@ -568,9 +568,9 @@ Now, I can simply click on this bookmarklet from whatever website/article I am l
 </div>
 </div>
 
-<div id="outline-container-org42b7e3c" class="outline-2">
-<h2 id="org42b7e3c">Daily-notes</h2>
-<div class="outline-text-2" id="text-org42b7e3c">
+<div id="outline-container-org24ac063" class="outline-2">
+<h2 id="org24ac063">Daily-notes</h2>
+<div class="outline-text-2" id="text-org24ac063">
 <p>
 Org-roam provides functions similar to org-journal. I decided to stick to org-roam for the daily notes too, to keep all the notes under one umbrella. To configure daily notes, there are 2 main variables: <code>org-roam-dailies-directory</code> and <code>org-roam-dailies-capture-templates</code>. They are the path to the daily-notes and the capture templates for daily notes respectively. A sane default config taken directly from the manual is
 </p>
@@ -604,18 +604,18 @@ Other functions to keep in mind:
 </div>
 </div>
 
-<div id="outline-container-orgd493eca" class="outline-2">
-<h2 id="orgd493eca">Diagnosing and Repairing Files</h2>
-<div class="outline-text-2" id="text-orgd493eca">
+<div id="outline-container-orgf812705" class="outline-2">
+<h2 id="orgf812705">Diagnosing and Repairing Files</h2>
+<div class="outline-text-2" id="text-orgf812705">
 <p>
 Once in a while, it would be a good idea to check for the correctness of the links. To do this easily, org-roam provides the <code>org-roam-doctor</code> function. This function checks the links in the current org-roam buffer. To run it on all files, use <code>C-u M-x org-roam-doctor</code> but this might take some time.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org12cf8fe" class="outline-2">
-<h2 id="org12cf8fe">Finding Unlinked References</h2>
-<div class="outline-text-2" id="text-org12cf8fe">
+<div id="outline-container-org6e1a922" class="outline-2">
+<h2 id="org6e1a922">Finding Unlinked References</h2>
+<div class="outline-text-2" id="text-org6e1a922">
 <p>
 It is difficult, and pointless to an extent, to try and remember all the notes to link to. For some such cases, org-roam has the <code>org-roam-unlinked-references</code>. It tries to find strings in the current buffer that match the title or aliases of any existing note in the org-roam database. These can then be converted to new links.
 </p>
@@ -626,13 +626,13 @@ It is difficult, and pointless to an extent, to try and remember all the notes t
 </div>
 </div>
 
-<div id="outline-container-org40d7c54" class="outline-2">
-<h2 id="org40d7c54"><span class="todo NEXT">NEXT</span> Deft, org-noter, org-roam-bibtex</h2>
-<div class="outline-text-2" id="text-org40d7c54">
+<div id="outline-container-org041df02" class="outline-2">
+<h2 id="org041df02"><span class="todo NEXT">NEXT</span> Deft, org-noter, org-roam-bibtex</h2>
+<div class="outline-text-2" id="text-org041df02">
 </div>
-<div id="outline-container-org71f8f26" class="outline-3">
-<h3 id="org71f8f26">Deft</h3>
-<div class="outline-text-3" id="text-org71f8f26">
+<div id="outline-container-org74af671" class="outline-3">
+<h3 id="org74af671">Deft</h3>
+<div class="outline-text-3" id="text-org74af671">
 <p>
 <code>deft</code> is an interface for enhanced searching and filtering of notes. This provides a better interface to quickly go to a required note as it searches both, title and body of the note. It can be installed directly from MELPA and is fairly easy to get started with.
 </p>
@@ -652,9 +652,9 @@ It is difficult, and pointless to an extent, to try and remember all the notes t
 </div>
 </div>
 
-<div id="outline-container-org84623c4" class="outline-2">
-<h2 id="org84623c4">Keybindings for <code>org-roam</code> functions</h2>
-<div class="outline-text-2" id="text-org84623c4">
+<div id="outline-container-org553d2ec" class="outline-2">
+<h2 id="org553d2ec">Keybindings for <code>org-roam</code> functions</h2>
+<div class="outline-text-2" id="text-org553d2ec">
 <p>
 I decided to create a keymap for org-roam, and I had heard about the <code>general</code> package on David Wilson's Emacs-from-scratch series so I decided to give that a shot.
 </p>
@@ -679,9 +679,9 @@ I decided to create a keymap for org-roam, and I had heard about the <code>gener
 </div>
 </div>
 </div>
-<div id="outline-container-org4308225" class="outline-2">
-<h2 id="org4308225"><code>use-package</code> code block</h2>
-<div class="outline-text-2" id="text-org4308225">
+<div id="outline-container-org2d591db" class="outline-2">
+<h2 id="org2d591db"><code>use-package</code> code block</h2>
+<div class="outline-text-2" id="text-org2d591db">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(use-package org-roam
   :straight t
@@ -752,7 +752,7 @@ I decided to create a keymap for org-roam, and I had heard about the <code>gener
 <div id="postamble" class="status">
 <p class="date">Date: 11 May, 2021</p>
 <p class="author">Author: Chahak Mehta</p>
-<p class="date">Created: 2021-05-14 Fri 19:08</p>
+<p class="date">Created: 2021-05-14 Fri 19:25</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

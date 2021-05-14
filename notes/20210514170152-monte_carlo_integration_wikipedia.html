@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-14 Fri 19:08 -->
+<!-- 2021-05-14 Fri 19:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Movies Every Physics Student Should Watch</title>
+<title>Monte Carlo integration - Wikipedia</title>
 <meta name="author" content="Chahak Mehta" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
@@ -194,128 +194,185 @@
   .org-svg { width: 90%; }
 </style>
 <link rel="stylesheet" href="../../../sakura.css" type="text/css"/>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Movies Every Physics Student Should Watch</h1>
+<h1 class="title">Monte Carlo integration - Wikipedia</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9a3db41">Primer</a></li>
-<li><a href="#org8491119">The Theory of Everything</a></li>
-<li><a href="#org8c648c3">Hawking</a></li>
-<li><a href="#org23646d8">Infinity</a></li>
-<li><a href="#org6a04939">Copenhagen</a></li>
-<li><a href="#org1a14ec8">Interstellar</a></li>
-<li><a href="#org5c72507">Coherence</a></li>
-<li><a href="#orgd716c9b">Einstein and Eddington</a></li>
-<li><a href="#orgac0509e">Predestination</a></li>
-<li><a href="#orge7940a8">A Serious Man</a></li>
-<li><a href="#org60e3bf1">Contact</a></li>
-<li><a href="#orge8b0827">2001: A Space Odyssey</a></li>
-<li><a href="#org5b32d40">Gravity</a></li>
-<li><a href="#orge5de24f">Flatland: The Movie</a></li>
-<li><a href="#orgf9331ab">October Sky</a></li>
-<li><a href="#orgc0fa0f2">Back To The Future</a></li>
-<li><a href="#org2a00335">The Martian</a></li>
-<li><a href="#org8c565b1">Marie Curie: More Than Meets the Eye</a></li>
-<li><a href="#org7bfa100">Particle Fever</a></li>
-<li><a href="#org8e76e5b">Apollo 13</a></li>
+<li><a href="#org465b91c">Overview</a></li>
+<li><a href="#org6257d3a">Basic Monte Carlo Estimator</a>
+<ul>
+<li><a href="#org28879d3">Simulation</a></li>
+</ul>
+</li>
+<li><a href="#org8d7f152">Importance Sampling</a></li>
 </ul>
 </div>
 </div>
 <dl class="org-dl">
-<dt>tags</dt><dd>"movies"</dd>
+<dt>tags</dt><dd>"maths" "monte-carlo"</dd>
 </dl>
 
 <p>
-A list of movies that should be added to the to-watch list
+Monte Carlo Integration is a technique for numerical integration using random numbers. It is a type of Monte Carlo methods that can be used to numerically compute a definite integral. The main differing point of such integration is that while standard methods use a regular interval to evaluate the integrand, Monte Carlo uses a random set of points to evaluate. This method is particularly useful for higher-dimensional integrals. There are various methods to perform such an integration: Uniform sampling, stratified sampling, importance sampling, sequential Monte Carlo, and mean field particle methods. We'll be taking a look at the uniform sampling, and importance sampling methods in brief.
 </p>
 
-<div id="outline-container-org9a3db41" class="outline-2">
-<h2 id="org9a3db41">Primer</h2>
+<div id="outline-container-org465b91c" class="outline-2">
+<h2 id="org465b91c">Overview</h2>
+<div class="outline-text-2" id="text-org465b91c">
+<p>
+At the core of it, Monte Carlo is an approximation method used to approximate the value of the integral as compared to the deterministic approach of methods like the <a href=20210514172158-trapezoidal_rule.html>trapezoidal-rule</a>. Each simulation of a monte carlo integral provides a different outcome, which can be averaged over multiple simulations.
+</p>
+
+<p>
+Let I be a multidimensional definite integral defined as
+</p>
+
+<p>
+\[
+I=\int_{a}^{b}f(x)dx
+\]
+</p>
+
+<p>
+and a random variable \(X_i ~ p(x)\) where \(p(x)\) must be nonzero for all \(x\) where \(f(x)\) is nonzero. Then, the Monte Carlo estimator is defined as
+</p>
+
+<p>
+\[
+F_{N} = \frac{1}{N}\sum_{i=1}^{N}\frac{f(X_i)}{p(X_i)}
+\]
+</p>
+
+<p>
+The value of \(I\) can be estimated by taking an average of several such Monte Carlo estimator values.
+</p>
+</div>
+</div>
+<div id="outline-container-org6257d3a" class="outline-2">
+<h2 id="org6257d3a">Basic Monte Carlo Estimator</h2>
+<div class="outline-text-2" id="text-org6257d3a">
+<p>
+The basic monte carlo estimator is a special case of Importance Sampling Estimator case where we sample the points from a uniform random variable, to calculate the integral. Therefore, \(X_i ~ p(x) = c\). This follows that for interval \((a, b)\), the value of \(c = \frac{1}{b-a}\). Therefore, the Monte Carlo estimator then becomes
+</p>
+
+<p>
+We can also extend this to be N-Dimensional. For example, a 3D basic estimator for an integral
+</p>
+
+<p>
+would be defined as
+</p>
+
+<p>
+Therefore, a general rule can be written as follows. For an n-dimensional integral
+</p>
+
+<p>
+the MC Estimator is defined as
+</p>
+
+<p>
+where \(N\) is the number of samples that are taken from the uniform distribution for evaluation.
+</p>
+</div>
+<div id="outline-container-org28879d3" class="outline-3">
+<h3 id="org28879d3">Simulation</h3>
+<div class="outline-text-3" id="text-org28879d3">
+<p>
+This method can be simulated fairly easily using python. Let us try and integrate the following function for \(0.8 < x < 3\)
+</p>
+
+<p>
+To do this, we'll first have to define a python function using numpy
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">import numpy as np
+
+def f(x):
+    return 1/(1+np.sinh(2*x)*np.log(x)**2)
+</pre>
 </div>
 
-<div id="outline-container-org8491119" class="outline-2">
-<h2 id="org8491119">The Theory of Everything</h2>
+<p>
+Now that we have a function that calculates the value of \(f(x)\) at a given set of points, let us start with the MC estimator. First we will define the limits of the integral \((a, b)\ and the number of estimators \(N\). We will also define the number of points that are sampled.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">n_estimators = 100
+N = 100
+a, b = 0.8, 3
+</pre>
 </div>
 
-<div id="outline-container-org8c648c3" class="outline-2">
-<h2 id="org8c648c3">Hawking</h2>
+<p>
+Now, we need to perform the calculation for each MC estimator and find the average. We can do this more efficiently by using numpy's vector operations and random number generator.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">rng = np.random.default_rng()
+
+r = rng.uniform(a, b, size=(n_estimators, N))
+result = (1/n_estimators)*((b-a)/N)*(np.sum(f(r)))
+result
+</pre>
 </div>
 
-<div id="outline-container-org23646d8" class="outline-2">
-<h2 id="org23646d8">Infinity</h2>
+<p>
+We can check this result by comparing it with the function <code>scipy.integrate.quad</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-python">from scipy import integrate
+
+integrate.quad(f, a, b)[0]
+</pre>
 </div>
 
-<div id="outline-container-org6a04939" class="outline-2">
-<h2 id="org6a04939">Copenhagen</h2>
+<p>
+As we can see, the two results are fairly similar. Do note that the result due to MC estimators is bound to change but it is still a fairly close estimate to the integration function from scipy.
+</p>
+</div>
+</div>
 </div>
 
-<div id="outline-container-org1a14ec8" class="outline-2">
-<h2 id="org1a14ec8">Interstellar</h2>
+<div id="outline-container-org8d7f152" class="outline-2">
+<h2 id="org8d7f152">Importance Sampling</h2>
+<div class="outline-text-2" id="text-org8d7f152">
+<p>
+The formula for a MC estimator that we saw above was for an importance sampling estimator. What it means is that, instead of choosing random points over an interval with uniform probability, we try to sample points based on its expected contribution to the integral. This means that instead of a uniform distribution, we use a distribution \(p(x)\) of our choice that we hope makes the calculation more efficient. The intuition behind this is that if a particular point \(x_i\) is picked up with a higher probability, then we weigh it down by a factor of its probability \(p(x_i)\).
+</p>
 </div>
-
-<div id="outline-container-org5c72507" class="outline-2">
-<h2 id="org5c72507">Coherence</h2>
-</div>
-
-<div id="outline-container-orgd716c9b" class="outline-2">
-<h2 id="orgd716c9b">Einstein and Eddington</h2>
-</div>
-
-<div id="outline-container-orgac0509e" class="outline-2">
-<h2 id="orgac0509e">Predestination</h2>
-</div>
-
-<div id="outline-container-orge7940a8" class="outline-2">
-<h2 id="orge7940a8">A Serious Man</h2>
-</div>
-
-<div id="outline-container-org60e3bf1" class="outline-2">
-<h2 id="org60e3bf1">Contact</h2>
-</div>
-
-<div id="outline-container-orge8b0827" class="outline-2">
-<h2 id="orge8b0827">2001: A Space Odyssey</h2>
-</div>
-
-<div id="outline-container-org5b32d40" class="outline-2">
-<h2 id="org5b32d40">Gravity</h2>
-</div>
-
-<div id="outline-container-orge5de24f" class="outline-2">
-<h2 id="orge5de24f">Flatland: The Movie</h2>
-</div>
-
-<div id="outline-container-orgf9331ab" class="outline-2">
-<h2 id="orgf9331ab">October Sky</h2>
-</div>
-
-<div id="outline-container-orgc0fa0f2" class="outline-2">
-<h2 id="orgc0fa0f2">Back To The Future</h2>
-</div>
-
-<div id="outline-container-org2a00335" class="outline-2">
-<h2 id="org2a00335">The Martian</h2>
-</div>
-
-<div id="outline-container-org8c565b1" class="outline-2">
-<h2 id="org8c565b1">Marie Curie: More Than Meets the Eye</h2>
-</div>
-
-<div id="outline-container-org7bfa100" class="outline-2">
-<h2 id="org7bfa100">Particle Fever</h2>
-</div>
-
-<div id="outline-container-org8e76e5b" class="outline-2">
-<h2 id="org8e76e5b">Apollo 13</h2>
 </div>
 </div>
 <div id="postamble" class="status">
+<p class="date">Date: 2021-05-14</p>
 <p class="author">Author: Chahak Mehta</p>
-<p class="date">Created: 2021-05-14 Fri 19:08</p>
+<p class="date">Created: 2021-05-14 Fri 19:25</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
