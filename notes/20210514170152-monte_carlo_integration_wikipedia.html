@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-14 Fri 19:25 -->
+<!-- 2021-05-14 Fri 19:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Monte Carlo integration - Wikipedia</title>
@@ -320,7 +320,7 @@ def f(x):
 </div>
 
 <p>
-Now that we have a function that calculates the value of \(f(x)\) at a given set of points, let us start with the MC estimator. First we will define the limits of the integral \((a, b)\ and the number of estimators \(N\). We will also define the number of points that are sampled.
+Now that we have a function that calculates the value of \(f(x)\) at a given set of points, let us start with the MC estimator. First we will define the limits of the integral \((a, b)\) and the number of estimators \(N\). We will also define the number of points that are sampled.
 </p>
 
 <div class="org-src-container">
@@ -343,6 +343,11 @@ result
 </pre>
 </div>
 
+<pre class="example">
+0.6755021232039001
+</pre>
+
+
 <p>
 We can check this result by comparing it with the function <code>scipy.integrate.quad</code>
 </p>
@@ -352,6 +357,11 @@ We can check this result by comparing it with the function <code>scipy.integrate
 integrate.quad(f, a, b)[0]
 </pre>
 </div>
+
+<pre class="example">
+0.6768400757156462
+</pre>
+
 
 <p>
 As we can see, the two results are fairly similar. Do note that the result due to MC estimators is bound to change but it is still a fairly close estimate to the integration function from scipy.
@@ -372,7 +382,7 @@ The formula for a MC estimator that we saw above was for an importance sampling 
 <div id="postamble" class="status">
 <p class="date">Date: 2021-05-14</p>
 <p class="author">Author: Chahak Mehta</p>
-<p class="date">Created: 2021-05-14 Fri 19:25</p>
+<p class="date">Created: 2021-05-14 Fri 19:32</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
