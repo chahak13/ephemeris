@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-16 Sun 18:19 -->
+<!-- 2021-05-17 Mon 14:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Monte Carlo integration - Wikipedia</title>
@@ -193,7 +193,6 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { width: 90%; }
 </style>
-<link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css"/>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "center",
@@ -344,7 +343,7 @@ result
 </div>
 
 <pre class="example">
-0.6788386462517738
+0.6741188109854432
 </pre>
 
 
@@ -357,6 +356,11 @@ We can check this result by comparing it with the function <code>scipy.integrate
 integrate.quad(f, a, b)[0]
 </pre>
 </div>
+
+<pre class="example">
+0.6768400757156462
+</pre>
+
 
 <p>
 As we can see, the two results are fairly similar. Do note that the result due to MC estimators is bound to change but it is still a fairly close estimate to the integration function from scipy.
@@ -377,7 +381,7 @@ The formula for a MC estimator that we saw above was for an importance sampling 
 <div id="postamble" class="status">
 <p class="date">Date: 2021-05-14</p>
 <p class="author">Author: Chahak Mehta</p>
-<p class="date">Created: 2021-05-16 Sun 18:19</p>
+<p class="date">Created: 2021-05-17 Mon 14:41</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

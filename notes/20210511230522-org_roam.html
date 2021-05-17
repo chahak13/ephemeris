@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-16 Sun 18:19 -->
+<!-- 2021-05-17 Mon 14:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Setup for org-roam and its compatriots</title>
@@ -193,7 +193,6 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { width: 90%; }
 </style>
-<link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css"/>
 </head>
 <body>
 <div id="content" class="content">
@@ -377,7 +376,7 @@ While the bulk of <code>org-roam</code>'s functionality is built up on vanilla o
 Each note needs to be prescribed with a title (duh?). This allows quick searching of notes. <code>org-roam</code> adds to the standard <code>+title</code> keyword in org-mode by using an new keyword called <code>#+roam_alias</code>. These aliases are space-delimited quoted strings that can also be used to refer the note while using <code>org-roam</code>. It also provides support for extracting title from the first headline in the file. The default action is to determine titles using <code>#+title</code> and <code>#+roam_alias</code> and if <code>#+title</code> isn't available, then fallback to the first headline. This is useful in topics like "World War 2" where it can also be referred to as "WW2" or "World War II" or such.
 </p>
 
-<pre class="example" id="orgcfcb80e">
+<pre class="example" id="org123595a">
 #+title: World War 2
 #+roam_alias: "WWII" "WW2" "World War II"
 </pre>
@@ -504,7 +503,7 @@ To enable org-roam's protocol extensions, add the following to emacs init file
 I had to make a desktop application file for <code>emacsclient</code> to use <code>org-protocol</code>. It can be made on Linux platforms by creating a file in <code>~/.local/share/applications/</code> directory. An example file is shown below
 </p>
 
-<pre class="example" id="org7821618">
+<pre class="example" id="orgfd44b5d">
 [Desktop Entry]
 Name=Org-Protocol
 Exec=emacsclient %u
@@ -752,7 +751,7 @@ I decided to create a keymap for org-roam, and I had heard about the <code>gener
 <div id="postamble" class="status">
 <p class="date">Date: 11 May, 2021</p>
 <p class="author">Author: Chahak Mehta</p>
-<p class="date">Created: 2021-05-16 Sun 18:19</p>
+<p class="date">Created: 2021-05-17 Mon 14:41</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
