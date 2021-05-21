@@ -6,8 +6,7 @@
 <!-- 2021-05-21 Fri 19:37 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Monte Carlo integration - Wikipedia</title>
-<meta name="author" content="Chahak Mehta" />
+<title>Notes on: Horne, J. S., Garton, E. O., Krone, S. M., &amp; Lewis, J. S. (2007): Analyzing Animal Movements Using  Brownian Bridges</title>
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -217,170 +216,198 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Monte Carlo integration - Wikipedia</h1>
+<h1 class="title">Notes on: Horne, J. S., Garton, E. O., Krone, S. M., &amp; Lewis, J. S. (2007): Analyzing Animal Movements Using  Brownian Bridges</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge856392">Overview</a></li>
-<li><a href="#orgcf85389">Basic Monte Carlo Estimator</a>
+<li><a href="#org4cecdb8">Brownian Bridge Movement Model (BBMM)</a>
 <ul>
-<li><a href="#org3812b59">Simulation</a></li>
+<li><a href="#org1839294">Probability conditioned on starting and ending points</a></li>
+<li><a href="#org49ae5b0">Simulation</a></li>
 </ul>
 </li>
-<li><a href="#orgd712ff0">Importance Sampling</a></li>
 </ul>
 </div>
 </div>
 <dl class="org-dl">
-<dt>tags</dt><dd>"maths" "monte-carlo"</dd>
+<dt>tags</dt><dd><a href=notes/20210514170152-monte_carlo_integration_wikipedia.html>Monte Carlo integration - Wikipedia</a></dd>
 </dl>
 
+<div id="outline-container-org4cecdb8" class="outline-2">
+<h2 id="org4cecdb8">Brownian Bridge Movement Model (BBMM)</h2>
+<div class="outline-text-2" id="text-org4cecdb8">
 <p>
-Monte Carlo Integration is a technique for numerical integration using random numbers. It is a type of Monte Carlo methods that can be used to numerically compute a definite integral. The main differing point of such integration is that while standard methods use a regular interval to evaluate the integrand, Monte Carlo uses a random set of points to evaluate. This method is particularly useful for higher-dimensional integrals. There are various methods to perform such an integration: Uniform sampling, stratified sampling, importance sampling, sequential Monte Carlo, and mean field particle methods. We'll be taking a look at the uniform sampling, and importance sampling methods in brief.
+A creature's movements define a path through an area during a specified period of time from \(t=0\) to \(T_{total}\). Let \(n\) discrete locations along the trajectory be available. Then, the utilization distribution of the space can be modeled using the Brownian Bridge Movement Model (BBMM) when we assume that the movement is conditioned on various starting and ending points.
 </p>
+</div>
 
-<div id="outline-container-orge856392" class="outline-2">
-<h2 id="orge856392">Overview</h2>
-<div class="outline-text-2" id="text-orge856392">
+<div id="outline-container-org1839294" class="outline-3">
+<h3 id="org1839294">Probability conditioned on starting and ending points</h3>
+<div class="outline-text-3" id="text-org1839294">
 <p>
-At the core of it, Monte Carlo is an approximation method used to approximate the value of the integral as compared to the deterministic approach of methods like the <a href=20210514172158-trapezoidal_rule.html>trapezoidal-rule</a>. Each simulation of a monte carlo integral provides a different outcome, which can be averaged over multiple simulations.
-</p>
-
-<p>
-Let I be a multidimensional definite integral defined as
-</p>
-
-<p>
-\[
-I=\int_{a}^{b}f(x)dx
-\]
+Let \(Z_{t}^{a, b, T}\) denote the position of a creature of time \(t \in [0, T]\). It's movement from point \(a\) to point \(b\) can be modelled using a random walk where the movement is conditioned on the points \(a\) and \(b\). Therefore, the values \(Z_{0}^{a, b, T}=a\) and \(Z_{T}^{a, b, T}\) are known values of the random walk in \(\mathbb{R}^2\). This process has a normal distribution \(Z_{t}^{a, b, T} ~ \mathcal{N}(\mu(t), \sigma^2(t)\mathbb{I})\) at time \(t \in [0,T]\), where
 </p>
 
 <p>
-and a random variable \(X_i ~ p(x)\) where \(p(x)\) must be nonzero for all \(x\) where \(f(x)\) is nonzero. Then, the Monte Carlo estimator is defined as
+Here, \(\mathbb{I}\) is the \(2 \times 2\) identity matrix and \(\sigma_{m}^{2}\) is the diffusion coefficient related to the mobility of the creature, i.e. it models the variance in the movement of the creature. The bivariate normal distribution is written as
 </p>
 
 <p>
-\[
-F_{N} = \frac{1}{N}\sum_{i=1}^{N}\frac{f(X_i)}{p(X_i)}
-\]
+where \(z\) is any location in \(\mathbb{R}^2\). Using these notations, the probability density of a brownian bridge from \(a\) to \(b\) at any point in time is given by
 </p>
 
 <p>
-The value of \(I\) can be estimated by taking an average of several such Monte Carlo estimator values.
+To also take into account the instrument errors made in determining positions \(a\) and \(b\), these positions are also modelled as probability density functions. Let these functions be \(f_a(x)\) and \(f_b(y)\) respectively where \(x\) and \(y\) are two-dimensional position vectors in \(\mathbb{R}^2\). Then, the BBMM \(Z_t^T\) can be modelled in terms of finding a creature in an area \(A\) at time \(t \in [0,T]\) as
+</p>
+
+<p>
+Now, to determine how much time a creature is spending in an area \(A\), we can use indicator function \(1_{A}(x)\)  that take value of 1 if the creature is in the area, 0 otherwise. The random quantity \(\int_0^T 1_{A}(Z_{t}^{T})dt\) then depicts the occupation time for a region \(A\). To find a corresponding probability density function \(h(z)\) we need
+</p>
+
+<p>
+On solving this, we get
+</p>
+
+<p>
+Now, when the positional errors are modelled as normal distributions \(\mathcal{N}(a, \delta_a^2\boldsymbol{I}\) and \(\mathcal{N}(b, \delta_b^2\boldsymbol{I}\), this equation can be simplified to
+</p>
+
+<p>
+where \(\sigma^2(t) = T\alpha(1-\alpha)\sigma_m^2 + (1-\alpha)^2\delta_a^2 + \alpha^2\delta_b^2\) and \(\alpha = t/T\).
 </p>
 </div>
 </div>
-<div id="outline-container-orgcf85389" class="outline-2">
-<h2 id="orgcf85389">Basic Monte Carlo Estimator</h2>
-<div class="outline-text-2" id="text-orgcf85389">
-<p>
-The basic monte carlo estimator is a special case of Importance Sampling Estimator case where we sample the points from a uniform random variable, to calculate the integral. Therefore, \(X_i ~ p(x) = c\). This follows that for interval \((a, b)\), the value of \(c = \frac{1}{b-a}\). Therefore, the Monte Carlo estimator then becomes
-</p>
 
+<div id="outline-container-org49ae5b0" class="outline-3">
+<h3 id="org49ae5b0">Simulation</h3>
+<div class="outline-text-3" id="text-org49ae5b0">
 <p>
-We can also extend this to be N-Dimensional. For example, a 3D basic estimator for an integral
-</p>
-
-<p>
-would be defined as
-</p>
-
-<p>
-Therefore, a general rule can be written as follows. For an n-dimensional integral
-</p>
-
-<p>
-the MC Estimator is defined as
-</p>
-
-<p>
-where \(N\) is the number of samples that are taken from the uniform distribution for evaluation.
-</p>
-</div>
-<div id="outline-container-org3812b59" class="outline-3">
-<h3 id="org3812b59">Simulation</h3>
-<div class="outline-text-3" id="text-org3812b59">
-<p>
-This method can be simulated fairly easily using python. Let us try and integrate the following function for \(0.8 < x < 3\)
-</p>
-
-<p>
-To do this, we'll first have to define a python function using numpy
+The above model for BBMM between 2 points can be simulated using python. For this, we will use the <code>numpy</code> library and <code>matplotlib</code> for visualization. First, let us import the necessary libraries.
 </p>
 
 <div class="org-src-container">
 <pre class="src src-python">import numpy as np
-
-def f(x):
-    return 1/(1+np.sinh(2*x)*np.log(x)**2)
+import matplotlib.pyplot as plt
 </pre>
 </div>
 
 <p>
-Now that we have a function that calculates the value of \(f(x)\) at a given set of points, let us start with the MC estimator. First we will define the limits of the integral \((a, b)\) and the number of estimators \(N\). We will also define the number of points that are sampled.
+We need to simulate the probability density function \(h(z)\). The required equations for the same are
+</p>
+
+<p>
+where \(\sigma^2(t) = T\alpha(1-\alpha)\sigma_m^2 + (1-\alpha)^2\delta_a^2 + \alpha^2\delta_b^2\) and \(\alpha = t/T\).
+</p>
+
+<p>
+and
+</p>
+
+<p>
+Let us declare these equations as functions to be used during the simulations. First we will write the <code>mu</code> function that calculates \(\mu\) given \(t, a, b, T\). These variables take their standard meaning of observation time, starting point, ending point, and total time respectively.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">n_estimators = 100
+<pre class="src src-python">def mu(t, a, b, T):
+    mu_x = a[:, 0] + (t*(b[:, 0]-a[:, 0]))/T
+    mu_y = a[:, 1] + (t*(b[:, 1]-a[:, 1]))/T
+    return np.array([mu_x, mu_y])
+</pre>
+</div>
+
+<p>
+We now need to calculate the \(\sigma^2\) values for the bivariate \(\varphi\). Since the we're assuming the probability density for the locations to be circular, \(\sigma^2\) will be scalar values calculated for each time \(t\).
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">def sigma2(t, T, sigma_m2, delta_a, delta_b):
+    alpha = t/T
+    return T*alpha*(1-alpha)*sigma_m2 + ((1-alpha)**2)*(delta_a**2) + (alpha**2)*(delta_b**2)
+</pre>
+</div>
+
+<p>
+Now that we have \(\mu\) and \(\sigma^2\), we can calculate the bivariate \(\varphi\).
+n
+</p>
+<div class="org-src-container">
+<pre class="src src-python">def varphi(z, mus, sigma2s):
+    breakpoint()
+    z_x = (1/np.sqrt(2*np.pi*sigma2s))*np.exp((-(z[0, :]-mus[0, :])/(2*sigma2s)))
+    z_y = (1/np.sqrt(2*np.pi*sigma2s))*np.exp((-(z[1, :]-mus[1, :])/(2*sigma2s)))
+    return np.array([z_x, z_y])
+</pre>
+</div>
+
+<p>
+Now that we have all the required functions, we can start calculating \(h(z)\) using <a href=20210514170152-monte_carlo_integration_wikipedia.html>monte-carlo integration</a>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">def monte_carlo_integration(f, lower_lim, upper_lim, n_estimators, N, *args):
+    rng = np.random.default_rng()
+
+    r = rng.uniform(lower_lim, upper_lim, size=(n_estimators, N))
+    result = (1/n_estimators)*((upper_lim-lower_lim)/N)*(np.sum(f(r, *args)))
+    return result
+</pre>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-python">def h(z, a, b, T, n_estimators, N, sigma_m2, delta_a, delta_b):
+    rng = np.random.default_rng()
+
+    t = rng.uniform(0, T, size=(n_estimators, N))
+    mus = mu(t, a, b, T)
+    sigma2s = sigma2(t, T, sigma_m2, delta_a, delta_b)
+    varphis = varphi(z, mus, sigma2s)
+    hz = (1/T)*(1/n_estimators)*((T-0)/N)*np.sum(varphis)
+    return hz
+</pre>
+</div>
+
+<p>
+Let us simulate one such BBMM using the following values:
+</p>
+<ul class="org-ul">
+<li>\(\sigma_m^2 = 642\)</li>
+<li>\(\delta_a = \delta_b = 28.85\) m</li>
+<li>\(a = (0, 0)\) and \(b = (0, 280\)</li>
+<li>\(T = 20\) min</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-python">T = 20
+a, b = np.array([[0, 0]]), np.array([[0, 280]])
+delta_a = delta_b = 28.85
+sigma_m2 = 642
+n_estimators = 1
 N = 100
-a, b = 0.8, 3
+x = np.arange(-1, 285, 0.5)
+y = np.zeros(x.shape)
+z = np.meshgrid(x, y)[0]
+
+prob_density = h(z, a, b, T, n_estimators, N, sigma_m2, delta_a, delta_b)
 </pre>
 </div>
 
+
 <p>
-Now, we need to perform the calculation for each MC estimator and find the average. We can do this more efficiently by using numpy's vector operations and random number generator.
+We can then visualize this probability density using matplotlib
 </p>
 
 <div class="org-src-container">
-<pre class="src src-python">rng = np.random.default_rng()
-
-r = rng.uniform(a, b, size=(n_estimators, N))
-result = (1/n_estimators)*((b-a)/N)*(np.sum(f(r)))
-result
+<pre class="src src-python">fig, ax = plt.subplots()
+ax.plot(np.linspace(0, 280, len(prob_density)), prob_density)
+plt.show()
 </pre>
 </div>
-
-<pre class="example">
-0.6731690764182102
-</pre>
-
-
-<p>
-We can check this result by comparing it with the function <code>scipy.integrate.quad</code>
-</p>
-<div class="org-src-container">
-<pre class="src src-python">from scipy import integrate
-
-integrate.quad(f, a, b)[0]
-</pre>
 </div>
-
-<pre class="example">
-0.6768400757156462
-</pre>
-
-
-<p>
-As we can see, the two results are fairly similar. Do note that the result due to MC estimators is bound to change but it is still a fairly close estimate to the integration function from scipy.
-</p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgd712ff0" class="outline-2">
-<h2 id="orgd712ff0">Importance Sampling</h2>
-<div class="outline-text-2" id="text-orgd712ff0">
-<p>
-The formula for a MC estimator that we saw above was for an importance sampling estimator. What it means is that, instead of choosing random points over an interval with uniform probability, we try to sample points based on its expected contribution to the integral. This means that instead of a uniform distribution, we use a distribution \(p(x)\) of our choice that we hope makes the calculation more efficient. The intuition behind this is that if a particular point \(x_i\) is picked up with a higher probability, then we weigh it down by a factor of its probability \(p(x_i)\).
-</p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Date: 2021-05-14</p>
-<p class="author">Author: Chahak Mehta</p>
 <p class="date">Created: 2021-05-21 Fri 19:37</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
