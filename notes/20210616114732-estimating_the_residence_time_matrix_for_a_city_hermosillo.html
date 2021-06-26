@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-06-26 Sat 16:47 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Estimating the residence-time matrix for a city (Hermosillo)</title>
+<meta name="author" content="Chahak Mehta" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Estimating the residence-time matrix for a city (Hermosillo)</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org8cb7793">Problem Statement</a></li>
+<li><a href="#orgd00f6ab">Brownian Bridge</a>
+<ul>
+<li><a href="#org849fcd1">Estimating probability of a point in space</a></li>
+<li><a href="#org5632b0c">Brownian bridges for all individuals</a></li>
+</ul>
+</li>
+<li><a href="#org074eb85">Simulation and bottlenecks</a>
+<ul>
+<li><a href="#org42240e5">Time profile for calculating probability for a region</a></li>
+<li><a href="#org48e4ddc">Time profile for h<sub>z</sub> function</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<dl class="org-dl">
+<dt>tags</dt><dd></dd>
+</dl>
+
+<div id="outline-container-org8cb7793" class="outline-2">
+<h2 id="org8cb7793">Problem Statement</h2>
+<div class="outline-text-2" id="text-org8cb7793">
+<ul class="org-ul">
+<li>To determine the residence-time matrix for a city, we need to estimate the mobility of individuals. We use Brownian Bridges to model this movement of individuals.</li>
+
+<li>Horne et al. discuss the usage of Brownian bridges to model the movement of animals in forest in their paper <a href="file:///home/boticelli/Zotero/storage/BHZNBL5B/Horne et al_2007_ANALYZING ANIMAL MOVEMENTS USING BROWNIAN BRIDGES.pdf">Analyzing animal movements using Brownian Bridges</a>. We follow their approach to do the same for individuals in a city.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd00f6ab" class="outline-2">
+<h2 id="orgd00f6ab">Brownian Bridge</h2>
+<div class="outline-text-2" id="text-orgd00f6ab">
+<ul class="org-ul">
+<li>Let the position of an individual at time \(t_1\) be \(z_1\) and at time \(t_2\) be \(z_2\). Then, its path of movement to go from \(z_1\) to \(z_2\) can be modelled as a random walk.</li>
+
+<li>If a Brownian motion is assumed between these two points, then \(z_t\) - the position of the individual at time \(t \in [t_1, t_2]\), is distributed according to a bivariate distribution with mean and covariance matrix given by</li>
+</ul>
+
+<p>
+\[
+</p>
+\begin{align*}
+  \mu(t; z_1, z_2) &= z_1 + (z_2 - z_1)\alpha \\
+  \Sigma(t; \sigma) &= \sigma_m^2 \left[\frac{(t - t_1)(t_2 - t)}{(t_2 - t_1)} \right]\mathbb{I}\\
+\end{align*}
+<p>
+\]
+</p>
+
+<p>
+where \(\alpha = (t - t_1)/(t_2 - t_1)\), \(\mathbb{I}\) is the 2x2 identity matrix and \(\sigma_m^2\) is the Brownian motion variance related to the mobility.
+</p>
+
+<ul class="org-ul">
+<li>Such a motion has variance <b>0</b> when \(t = t_1\) or \(t = t_2\) and the maximum variance at the centre of the straight line joining the two points. This motion is called a <i>Brownian Bridge</i>.</li>
+</ul>
+</div>
+
+<div id="outline-container-org849fcd1" class="outline-3">
+<h3 id="org849fcd1">Estimating probability of a point in space</h3>
+<div class="outline-text-3" id="text-org849fcd1">
+<ul class="org-ul">
+<li>Theoretically, the variance at the endpoints of a bridge is 0, but practically, that may not be the case. To accomodate that, we assume that even the endpoints are bivariate normal distributions, i.e. \(N(z_1, \delta^2\mathbb{I})\) and \(N(z_2, \delta^2\mathbb{I})\), where \(\delta^2\) is the variance of the location error.</li>
+
+<li><p>
+Now, we can calculate the marginal probability density at position \(z\) at time \(t \in [t_1, t_2]\) as
+</p>
+
+<p>
+\[
+</p>
+\begin{equation}
+  f\left(z;t,\sigma_{m},\delta\right) = \int\int\phi\left(z;\mu(t;a,b),\Sigma(t;\sigma_{m})\right)\,\phi\left(a;z_{1},\delta^2\mathbb{I}\right)\phi\left(b;z_{2}, \delta^2\mathbb{I}\right)da\,db,  \nonumber
+\label{MarginalDensity01}
+\end{equation}
+<p>
+\]
+</p></li>
+
+<li><p>
+Therefore, we can calculate the probability density at position \(z\) by
+</p>
+
+<p>
+\[
+</p>
+\begin{align}
+  h\left(z;\sigma_{m},\delta\right) &= \frac{1}{(t_{2}-t_{1})}\int_{t_{1}}^{t_{2}}f\left(z;t,\sigma_{m},\delta\right)dt  \nonumber \\
+                                                &= \frac{1}{T}\int_{0}^{T}\phi\left(z;\mu(t),\sigma(t;\sigma_{m},\delta)\mathbb{I}\right)dt, 
+\label{MarginalDensity02}
+\end{align} 
+<p>
+\]
+</p>
+
+<p>
+where \(T = t_2 - t_1\), \(\mu(t) = z_1 + (z_2 - z_1)\alpha\), \(\sigma(t; \sigma_m, \delta) = T\alpha (1 - \alpha)\sigma_m^2 + [(1-\alpha)^2 + \alpha^2]\delta^2\) and \(\alpha = t/T\).
+</p></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org5632b0c" class="outline-3">
+<h3 id="org5632b0c">Brownian bridges for all individuals</h3>
+<div class="outline-text-3" id="text-org5632b0c">
+<ul class="org-ul">
+<li>We have GPS data points for ~3 million Hermosillo residents over a few months. Using this data, we can generate Brownian Bridges motion for each individual between two points in time.</li>
+
+<li>We can use these brownian motion to estimate the marginal probability density at a point, with the resulting probability density being the sum of computations for all the brownian bridges.</li>
+
+<li>Once we have the probability densities at each point, we can calculate the cumulative probability density of an AGEB (locality) by adding the values for each point in the AGEB.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org074eb85" class="outline-2">
+<h2 id="org074eb85">Simulation and bottlenecks</h2>
+<div class="outline-text-2" id="text-org074eb85">
+</div>
+<div id="outline-container-org42240e5" class="outline-3">
+<h3 id="org42240e5">Time profile for calculating probability for a region</h3>
+<div class="outline-text-3" id="text-org42240e5">
+<pre class="example" id="org24769c9">
+Total time: 50.9634 s
+File: residence_time.py
+Function: prob_region_new at line 130
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+   130                                           @profile
+   131                                           def prob_region_new(data, cve_ageb, gdf_ind, sigma_m, delta_z, M):
+   132        21        264.0     12.6      0.0      N = len(gdf_ind)
+   133        21      24644.0   1173.5      0.0      polygon = data.loc[data["CVE_AGEB"] == cve_ageb, "geometry"]
+   134        21      19143.0    911.6      0.0      limits = polygon.bounds.iloc[0]
+   135        21       2064.0     98.3      0.0      rx = rng.uniform(limits["minx"], limits["maxx"], M).reshape(-1, 1)
+   136        21        728.0     34.7      0.0      ry = rng.uniform(limits["miny"], limits["maxy"], M).reshape(-1, 1)
+   137        21    1217010.0  57952.9      2.4      points = gpd.GeoSeries(gpd.points_from_xy(rx, ry, crs="EPSG:3857"))
+   138        21     413522.0  19691.5      0.8      indicator = points.within(polygon.iloc[0]).to_numpy().reshape(-1, 1)
+   139        21      13091.0    623.4      0.0      T_total = (gdf_ind["timestamp"].max() - gdf_ind["timestamp"].min()).total_seconds()
+   140        21         29.0      1.4      0.0      tot = 0
+   141        21         19.0      0.9      0.0      accum_values = []
+   142        21      36448.0   1735.6      0.1      gdf_ind["T_i"] = (gdf_ind["next_time"] - gdf_ind["timestamp"]).dt.total_seconds()
+   143        42   49211766.0 1171708.7     96.6      gdf_ind["hz"] = gdf_ind.apply(lambda row: h_z(row["geometry"],...
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org48e4ddc" class="outline-3">
+<h3 id="org48e4ddc">Time profile for h<sub>z</sub> function</h3>
+<div class="outline-text-3" id="text-org48e4ddc">
+<pre class="example" id="org62dcd27">
+Total time: 33.6217 s
+File: residence_time.py
+Function: h_z at line 89
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    89                                           @profile
+    90                                           def h_z(a, b, T_i, x, y, sigma_m2, delta_a, delta_b, indicator, n_time_samples=1000):
+    91    160839     446712.0      2.8      1.3      mc_sum = np.zeros(x.shape)
+    92    160839    2207620.0     13.7      6.6      t = rng.uniform(0, T_i, size=n_time_samples)
+    93    160839     554499.0      3.4      1.6      alpha = t/T_i
+    94    160839   12209117.0     75.9     36.3      ax, ay, bx, by = a.x, a.y, b.x, b.y
+    95    160839     893705.0      5.6      2.7      mu_x = ax + alpha * (bx - ax)
+    96    160839     589543.0      3.7      1.8      mu_y = ay + alpha * (by - ay)
+    97    482517    1754486.0      3.6      5.2      variance = (t * (1 - alpha) * sigma_m2
+    98    160839    1323353.0      8.2      3.9                      + (1 - alpha)**2 * (delta_a**2)
+    99    160839     765546.0      4.8      2.3                      + (alpha**2) * (delta_b**2))
+   100    160839    5816365.0     36.2     17.3      pdf_x = norm_pdf(x, mu_x, variance)
+   101    160839    5406956.0     33.6     16.1      pdf_y = norm_pdf(y, mu_y, variance)
+   102    160839    1559587.0      9.7      4.6      mc_sum += indicator * pdf_x * pdf_y
+   103                                           
+   104    160839      94245.0      0.6      0.3      return mc_sum
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2021-06-16</p>
+<p class="author">Author: Chahak Mehta</p>
+<p class="date">Created: 2021-06-26 Sat 16:47</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

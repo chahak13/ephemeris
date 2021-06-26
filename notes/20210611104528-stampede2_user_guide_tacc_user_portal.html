@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-06-26 Sat 16:47 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Stampede2 User Guide - TACC User Portal</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Stampede2 User Guide - TACC User Portal</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orga75279c">System Overview</a>
+<ul>
+<li><a href="#orgaba77b3">KNL Compute Nodes</a></li>
+<li><a href="#org56e2063">SKX Compute Nodes</a></li>
+</ul>
+</li>
+<li><a href="#orgded92c1">File Systems</a></li>
+<li><a href="#orgd78c2ec">Accessing the system</a></li>
+<li><a href="#org47b3394">Using Stampede2</a>
+<ul>
+<li><a href="#org1fb9187">Configuring account</a>
+<ul>
+<li><a href="#orgf26c0e0">Linux Shell</a></li>
+<li><a href="#org4567dc9">Account-level Diagnostics</a></li>
+<li><a href="#orgf20d86b">File System Usage Recommendations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<dl class="org-dl">
+<dt>tags</dt><dd></dd>
+</dl>
+
+<div id="outline-container-orga75279c" class="outline-2">
+<h2 id="orga75279c">System Overview</h2>
+<div class="outline-text-2" id="text-orga75279c">
+</div>
+<div id="outline-container-orgaba77b3" class="outline-3">
+<h3 id="orgaba77b3">KNL Compute Nodes</h3>
+<div class="outline-text-3" id="text-orgaba77b3">
+<p>
+Stampede2 has 4,200 Knight's Landing (KNL) compute nodes. An overview of the specifications of each node is as follows
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Model</td>
+<td class="org-left">Intel Xeon Phi 7250 ("Knights Landing")</td>
+</tr>
+
+<tr>
+<td class="org-left">Total cores per KNL node</td>
+<td class="org-left">68 cores on a single socket</td>
+</tr>
+
+<tr>
+<td class="org-left">Hardware threads per core</td>
+<td class="org-left">4</td>
+</tr>
+
+<tr>
+<td class="org-left">Hardware threads per node</td>
+<td class="org-left">68 x 4 = 272</td>
+</tr>
+
+<tr>
+<td class="org-left">Clock rate</td>
+<td class="org-left">1.4GHz</td>
+</tr>
+
+<tr>
+<td class="org-left">RAM</td>
+<td class="org-left">96GB DDR4 plus 16GB high-speed MCDRAM. Configurable in two important ways</td>
+</tr>
+
+<tr>
+<td class="org-left">Cache</td>
+<td class="org-left">32KB L1 data cache/core; 1MB L2/two-core tile. In default config, MCDRAM</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">operates as 16GB direct-mapped L3.</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+All but 504 KNL nodes have a 107GB <code>/tmp</code> partition on a 200GB Solid State Drive (SSD). The 504 KNLs originally installed as the Stampede1 KNL sub-system each have a 32GB <code>/tmp</code> partition on 112GB SSDs. The latter nodes currently make up the development, long and flat-quadrant queues. Size of <code>/tmp</code> partitions as of 24 Apr 2018. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org56e2063" class="outline-3">
+<h3 id="org56e2063">SKX Compute Nodes</h3>
+<div class="outline-text-3" id="text-org56e2063">
+<p>
+Stampede2 hosts 1,738 SKX compute nodes.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Model</td>
+<td class="org-left">Intel Xeon Platinum 8160 ("Skylake")</td>
+</tr>
+
+<tr>
+<td class="org-left">Total cores per KNL node</td>
+<td class="org-left">48 cores on two socket (24 cores/socket)</td>
+</tr>
+
+<tr>
+<td class="org-left">Hardware threads per core</td>
+<td class="org-left">2</td>
+</tr>
+
+<tr>
+<td class="org-left">Hardware threads per node</td>
+<td class="org-left">48 x 2 = 96</td>
+</tr>
+
+<tr>
+<td class="org-left">Clock rate</td>
+<td class="org-left">2.1GHz nominal (1.4-3.7GHz depending on instruction set and number of active cores</td>
+</tr>
+
+<tr>
+<td class="org-left">RAM</td>
+<td class="org-left">192GB (2.67GHz) DDR4</td>
+</tr>
+
+<tr>
+<td class="org-left">Cache</td>
+<td class="org-left">32KB L1 data cache/core; 1MB L2/core. 33MB L2/socket.</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Local storage on the SKX compute nodes is in tthe form of 144GB <code>/tmp</code> partitions on a 200GB SSD.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgded92c1" class="outline-2">
+<h2 id="orgded92c1">File Systems</h2>
+<div class="outline-text-2" id="text-orgded92c1">
+<p>
+Stampede2 mounts three shared Lustre file systems on which each user has account-specific directories for <code>$HOME</code>, <code>$WORK</code>, and <code>$SCRATCH</code>. Each of the file systems are available on all Stampede2 nodes.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">File System</th>
+<th scope="col" class="org-left">Quota</th>
+<th scope="col" class="org-left">Key Features</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>$HOME</code></td>
+<td class="org-left">10GB; 200,000 files</td>
+<td class="org-left"><b>Not intended for parallel or high-intensity file operations</b></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Backed up regularly</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">~1PB Overall capacity. 2 Meta-Data Servers, 4 Object Storage Targets</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Not purged</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>$WORK</code></td>
+<td class="org-left">1TB; 3,000,000 files across all</td>
+<td class="org-left"><b>Not intended for parallel or high-intensity file operations</b></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">TACC systems.</td>
+<td class="org-left">On Global Shared FS mounted on most TACC systems.</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>Not backed up</b></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Not purged</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>$SCRATCH</code></td>
+<td class="org-left">no quota</td>
+<td class="org-left">Overall ~30PB. 4 Meta-Data Servers. 66 Object Storage Targets</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>Not backed up</b></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left"><b>Files are subject to purge if access time &gt;10 days old</b></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<code>$SCRATCH</code> is a temporary storage space. Files not accessed in last 10 days will be subject to the purging. Reading or executing a file/script will update the access time. <code>ls -ul</code> can be used to view access times.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd78c2ec" class="outline-2">
+<h2 id="orgd78c2ec">Accessing the system</h2>
+<div class="outline-text-2" id="text-orgd78c2ec">
+<p>
+Access to all TACC systems requires setting up MFA. This is done using the TACC Token App. This app provides a token for each login, that needs to be given while using ssh.
+</p>
+
+<p>
+<b>Important:</b> <i>If user created TACC account using UT EID, then they'll have to go to the reset password using the email-id provided and create a password that will then be used as a password in ssh.</i>
+</p>
+
+<p>
+To initiate a stampede2 ssh session, simply use ssh on the command-line.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">ssh &lt;username&gt;@stampede2.tacc.utexas.edu
+</pre>
+</div>
+
+<p>
+If one wants to connect to a specific login node (not sure when would this be required), then the full domain can be used. For example, to log into the second node, use
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">ssh &lt;username&gt;@login2.stampede2.tacc.utexas.edu
+</pre>
+</div>
+
+<p>
+To connect with graphical support (X11), use the normal ssh flags of <code>-X</code> or <code>-Y</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">ssh -X &lt;username&gt;@stampede2.tacc.utexas.edu
+</pre>
+</div>
+
+<p>
+<b>Important</b> <code>ssh-keygen</code> should <i>NOT</i> be run on Stampede2. When logging in, it creates the right key-pair by itself.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org47b3394" class="outline-2">
+<h2 id="org47b3394">Using Stampede2</h2>
+<div class="outline-text-2" id="text-org47b3394">
+<p>
+Stampede2 nodes run <b>Red Hat Enterprise Linux 7</b>.
+</p>
+</div>
+
+<div id="outline-container-org1fb9187" class="outline-3">
+<h3 id="org1fb9187">Configuring account</h3>
+<div class="outline-text-3" id="text-org1fb9187">
+</div>
+<div id="outline-container-orgf26c0e0" class="outline-4">
+<h4 id="orgf26c0e0">Linux Shell</h4>
+<div class="outline-text-4" id="text-orgf26c0e0">
+<p>
+The default login shell is <b>bash</b>. It can be changed to csh, sh, tcsh, or zsh by submitting a ticket through TACC portal. <code>chsh</code> command won't work.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4567dc9" class="outline-4">
+<h4 id="org4567dc9">Account-level Diagnostics</h4>
+<div class="outline-text-4" id="text-org4567dc9">
+<p>
+TACC has a <code>sanitytool</code> module that loads an account-level diagnostics package to detect account-level issues. It also provides fixes for the issues. To run the tool, execute the following commands
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ module load sanitytool
+$ sanitycheck
+</pre>
+</div>
+
+<p>
+It is a good habit to periodically run <code>sanitycheck</code> as preventive measure. To read more help on it, run <code>module help sanitytool</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf20d86b" class="outline-4">
+<h4 id="orgf20d86b">File System Usage Recommendations</h4>
+<div class="outline-text-4" id="text-orgf20d86b">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">File system</th>
+<th scope="col" class="org-left">Best practices</th>
+<th scope="col" class="org-left">Best activities</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">$HOME</td>
+<td class="org-left">cron jobs</td>
+<td class="org-left">compiling, editing</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">small scripts</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">environment settings</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">$WORK</td>
+<td class="org-left">store software installations</td>
+<td class="org-left">staging datasets</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">original datasets that can't be reproduced</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">job scripts and templates</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">$SCRATCH</td>
+<td class="org-left"><b>Temporary storage</b></td>
+<td class="org-left">all job I/O activity</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">I/O files</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">job files</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">temporary datasets</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2021-06-26 Sat 16:47</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

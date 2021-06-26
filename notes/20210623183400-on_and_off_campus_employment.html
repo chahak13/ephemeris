@@ -6,7 +6,7 @@
 <!-- 2021-06-26 Sat 16:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Notes on: Horne, J. S., Garton, E. O., Krone, S. M., &amp; Lewis, J. S. (2007): Analyzing Animal Movements Using  Brownian Bridges</title>
+<title>On and Off Campus Employment</title>
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -192,221 +192,166 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { width: 90%; }
 </style>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
-
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Notes on: Horne, J. S., Garton, E. O., Krone, S. M., &amp; Lewis, J. S. (2007): Analyzing Animal Movements Using  Brownian Bridges</h1>
+<h1 class="title">On and Off Campus Employment</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4cecdb8">Brownian Bridge Movement Model (BBMM)</a>
+<li><a href="#orga43b31b">During studies</a>
 <ul>
-<li><a href="#org1839294">Probability conditioned on starting and ending points</a></li>
-<li><a href="#org49ae5b0">Simulation</a></li>
+<li><a href="#orge816ccb">On-campus Employment</a></li>
+<li><a href="#org98e8259">CPT</a></li>
+<li><a href="#orgc14e033">OPT</a></li>
+<li><a href="#orga403a72">After studies</a>
+<ul>
+<li><a href="#orgef335ca">Post Completion OPT</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#org809be2a">How to get course-credit for CPT</a></li>
+<li><a href="#orga6e9893">Is freelancing legal?</a></li>
+<li><a href="#org2ff4339">Can show max 90 days of unemployment after EAD arrives</a></li>
 </ul>
 </div>
 </div>
 <dl class="org-dl">
-<dt>tags</dt><dd><a href=notes/20210514170152-monte_carlo_integration_wikipedia.html>Monte Carlo integration - Wikipedia</a></dd>
+<dt>tags</dt><dd></dd>
 </dl>
 
-<div id="outline-container-org4cecdb8" class="outline-2">
-<h2 id="org4cecdb8">Brownian Bridge Movement Model (BBMM)</h2>
-<div class="outline-text-2" id="text-org4cecdb8">
-<p>
-A creature's movements define a path through an area during a specified period of time from \(t=0\) to \(T_{total}\). Let \(n\) discrete locations along the trajectory be available. Then, the utilization distribution of the space can be modeled using the Brownian Bridge Movement Model (BBMM) when we assume that the movement is conditioned on various starting and ending points.
-</p>
+
+<div id="outline-container-orga43b31b" class="outline-2">
+<h2 id="orga43b31b">During studies</h2>
+<div class="outline-text-2" id="text-orga43b31b">
 </div>
-
-<div id="outline-container-org1839294" class="outline-3">
-<h3 id="org1839294">Probability conditioned on starting and ending points</h3>
-<div class="outline-text-3" id="text-org1839294">
-<p>
-Let \(Z_{t}^{a, b, T}\) denote the position of a creature of time \(t \in [0, T]\). It's movement from point \(a\) to point \(b\) can be modelled using a random walk where the movement is conditioned on the points \(a\) and \(b\). Therefore, the values \(Z_{0}^{a, b, T}=a\) and \(Z_{T}^{a, b, T}\) are known values of the random walk in \(\mathbb{R}^2\). This process has a normal distribution \(Z_{t}^{a, b, T} ~ \mathcal{N}(\mu(t), \sigma^2(t)\mathbb{I})\) at time \(t \in [0,T]\), where
-</p>
-
-<p>
-Here, \(\mathbb{I}\) is the \(2 \times 2\) identity matrix and \(\sigma_{m}^{2}\) is the diffusion coefficient related to the mobility of the creature, i.e. it models the variance in the movement of the creature. The bivariate normal distribution is written as
-</p>
-
-<p>
-where \(z\) is any location in \(\mathbb{R}^2\). Using these notations, the probability density of a brownian bridge from \(a\) to \(b\) at any point in time is given by
-</p>
-
-<p>
-To also take into account the instrument errors made in determining positions \(a\) and \(b\), these positions are also modelled as probability density functions. Let these functions be \(f_a(x)\) and \(f_b(y)\) respectively where \(x\) and \(y\) are two-dimensional position vectors in \(\mathbb{R}^2\). Then, the BBMM \(Z_t^T\) can be modelled in terms of finding a creature in an area \(A\) at time \(t \in [0,T]\) as
-</p>
-
-<p>
-Now, to determine how much time a creature is spending in an area \(A\), we can use indicator function \(1_{A}(x)\)  that take value of 1 if the creature is in the area, 0 otherwise. The random quantity \(\int_0^T 1_{A}(Z_{t}^{T})dt\) then depicts the occupation time for a region \(A\). To find a corresponding probability density function \(h(z)\) we need
-</p>
-
-<p>
-On solving this, we get
-</p>
-
-<p>
-Now, when the positional errors are modelled as normal distributions \(\mathcal{N}(a, \delta_a^2\boldsymbol{I})\) and \(\mathcal{N}(b, \delta_b^2\boldsymbol{I})\), this equation can be simplified to
-</p>
-
-<p>
-where \(\sigma^2(t) = T\alpha(1-\alpha)\sigma_m^2 + (1-\alpha)^2\delta_a^2 + \alpha^2\delta_b^2\) and \(\alpha = t/T\).
-</p>
+<div id="outline-container-orge816ccb" class="outline-3">
+<h3 id="orge816ccb">On-campus Employment</h3>
+<div class="outline-text-3" id="text-orge816ccb">
+<ul class="org-ul">
+<li>Any employment paid by uni or through approved vendor.</li>
+<li>Need to maintain F-1 status</li>
+<li>No authorization needed</li>
+<li>Can work upto 20 hrs/week during academic semesters</li>
+<li>Beyond 20 in breaks</li>
+<li>Need process done with ISSS for SSN</li>
+</ul>
 </div>
 </div>
 
-<div id="outline-container-org49ae5b0" class="outline-3">
-<h3 id="org49ae5b0">Simulation</h3>
-<div class="outline-text-3" id="text-org49ae5b0">
-<p>
-The above model for BBMM between 2 points can be simulated using python. For this, we will use the <code>numpy</code> library and <code>matplotlib</code> for visualization. First, let us import the necessary libraries.
-</p>
+<div id="outline-container-org98e8259" class="outline-3">
+<h3 id="org98e8259">CPT</h3>
+<div class="outline-text-3" id="text-org98e8259">
+<ul class="org-ul">
+<li>Beyond 20hours a week on campus / Any paid off campus</li>
+<li>must be enrolled in US for 2 semesters</li>
+<li>Job with determined dates</li>
+<li>Related to your major</li>
+<li>Should receive course credit or required to complete the degree OR required to complete thesis/report</li>
+<li>any changes in employer, position or dates, would need new authorization</li>
+<li>Part-time (&lt;20/wk) is unlimited</li>
+<li>&gt;12 months of full-time makes inelligible for OPT</li>
+<li><b>unauthorized employment</b> will lead to termination of f1.
+<ul class="org-ul">
+<li>work beyond or prior to authorization</li>
+<li>no course credit earned (if through course enrollment)</li>
+</ul></li>
 
-<div class="org-src-container">
-<pre class="src src-python">import numpy as np
-import matplotlib.pyplot as plt
-</pre>
+<li>Employer needs to provide job offer letter</li>
+
+<li>advisor should sign off on application and confirm it is related to my major</li>
+
+<li>CPT for course credit - if during fall/spring, take it in the semester of internship. If during summer, take during either summer semester or succeeding fall semester.</li>
+</ul>
 </div>
-
-<p>
-We need to simulate the probability density function \(h(z)\). The required equations for the same are
-</p>
-
-<p>
-where \(\sigma^2(t) = T\alpha(1-\alpha)\sigma_m^2 + (1-\alpha)^2\delta_a^2 + \alpha^2\delta_b^2\) and \(\alpha = t/T\).
-</p>
-
-<p>
-and
-</p>
-
-<p>
-Let us declare these equations as functions to be used during the simulations. First we will write the <code>mu</code> function that calculates \(\mu\) given \(t, a, b, T\). These variables take their standard meaning of observation time, starting point, ending point, and total time respectively.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-python">def mu(t, a, b, T):
-    mu_x = a[:, 0] + (t*(b[:, 0]-a[:, 0]))/T
-    mu_y = a[:, 1] + (t*(b[:, 1]-a[:, 1]))/T
-    return np.array([mu_x, mu_y])
-</pre>
 </div>
-
-<p>
-We now need to calculate the \(\sigma^2\) values for the bivariate \(\varphi\). Since the we're assuming the probability density for the locations to be circular, \(\sigma^2\) will be scalar values calculated for each time \(t\).
-</p>
-
-<div class="org-src-container">
-<pre class="src src-python">def sigma2(t, T, sigma_m2, delta_a, delta_b):
-    alpha = t/T
-    return T*alpha*(1-alpha)*sigma_m2 + ((1-alpha)**2)*(delta_a**2) + (alpha**2)*(delta_b**2)
-</pre>
+<div id="outline-container-orgc14e033" class="outline-3">
+<h3 id="orgc14e033">OPT</h3>
+<div class="outline-text-3" id="text-orgc14e033">
+<ul class="org-ul">
+<li>OPT is employment related to the student's field of study but not integral or required for studies.</li>
+<li>Must be enrolled for 2 reg sems</li>
+<li>No job offer required</li>
+<li>Directly related to major</li>
+<li>Pre-completion will subtract time from Post-completion OPT.
+<ul class="org-ul">
+<li>Part-time subtracts 2:1</li>
+<li>Full time subtracts 1:1</li>
+</ul></li>
+<li>Can take 3-4 months to approve since done by USCIS</li>
+<li>Will receive EAD to work</li>
+</ul>
 </div>
-
-<p>
-Now that we have \(\mu\) and \(\sigma^2\), we can calculate the bivariate \(\varphi\).
-n
-</p>
-<div class="org-src-container">
-<pre class="src src-python">def varphi(z, mus, sigma2s):
-    z_x = (1/np.sqrt(2*np.pi*sigma2s))*np.exp((-(z[0, :]-mus[0, :])/(2*sigma2s)))
-    z_y = (1/np.sqrt(2*np.pi*sigma2s))*np.exp((-(z[1, :]-mus[1, :])/(2*sigma2s)))
-    return np.array([z_x, z_y])
-</pre>
 </div>
-
-<p>
-Now that we have all the required functions, we can start calculating \(h(z)\) using <a href=20210514170152-monte_carlo_integration_wikipedia.html>monte-carlo integration</a>.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-python">def monte_carlo_integration(f, lower_lim, upper_lim, n_estimators, N, *args):
-    rng = np.random.default_rng()
-
-    r = rng.uniform(lower_lim, upper_lim, size=(n_estimators, N))
-    result = (1/n_estimators)*((upper_lim-lower_lim)/N)*(np.sum(f(r, *args)))
-    return result
-</pre>
+<div id="outline-container-orga403a72" class="outline-3">
+<h3 id="orga403a72">After studies</h3>
+<div class="outline-text-3" id="text-orga403a72">
 </div>
-
-<div class="org-src-container">
-<pre class="src src-python">def h(z, a, b, T, n_estimators, N, sigma_m2, delta_a, delta_b):
-    rng = np.random.default_rng()
-
-    t = rng.uniform(0, T, size=(n_estimators, N))
-    mus = mu(t, a, b, T)
-    sigma2s = sigma2(t, T, sigma_m2, delta_a, delta_b)
-    varphis = varphi(z, mus, sigma2s)
-    hz = (1/T)*(1/n_estimators)*((T-0)/N)*np.sum(varphis)
-    return hz
-</pre>
+<div id="outline-container-orgef335ca" class="outline-4">
+<h4 id="orgef335ca">Post Completion OPT</h4>
+<div class="outline-text-4" id="text-orgef335ca">
+<ul class="org-ul">
+<li>No job offer required</li>
+<li>Directly related to major</li>
+<li>Can apply within 90 days of graduating</li>
+</ul>
 </div>
-
+<ul class="org-ul">
+<li><a id="org4849b23"></a>Application Process<br />
+<div class="outline-text-5" id="text-org4849b23">
+<ol class="org-ol">
+<li>Check eligibility with ISSS</li>
+<li>Can't apply earlier than 90 days of graduating and 60 days after graduating</li>
+<li>Apply through myIO/I-20 issued</li>
+<li>Send application to USCIS</li>
+<li>Add info to SEVP portal</li>
+</ol>
+</div>
+</li>
+<li><a id="orgd132508"></a>STEM OPT Extension<br />
+<div class="outline-text-5" id="text-orgd132508">
 <p>
-Let us simulate one such BBMM using the following values:
+24-month extension if
 </p>
 <ul class="org-ul">
-<li>\(\sigma_m^2 = 642\)</li>
-<li>\(\delta_a = \delta_b = 28.85\) m</li>
-<li>\(a = (0, 0)\) and \(b = (0, 280\)</li>
-<li>\(T = 20\) min</li>
+<li>Received STEM degree</li>
+<li>Currently working on initial 12-month of OPT</li>
+<li>Are working for US company registered with E-Verify employment verification system.</li>
 </ul>
-
-<div class="org-src-container">
-<pre class="src src-python">T = 20
-a, b = np.array([[0, 0]]), np.array([[0, 280]])
-delta_a = delta_b = 28.85
-sigma_m2 = 642
-n_estimators = 1
-N = 100
-x = np.arange(-1, 285, 0.5)
-y = np.zeros(x.shape)
-z = np.meshgrid(x, y)[0]
-
-prob_density = h(z, a, b, T, n_estimators, N, sigma_m2, delta_a, delta_b)
-</pre>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 
 
+<div id="outline-container-org809be2a" class="outline-2">
+<h2 id="org809be2a">How to get course-credit for CPT</h2>
+<div class="outline-text-2" id="text-org809be2a">
 <p>
-We can then visualize this probability density using matplotlib
+At the time of applying for CPT, we have to tick a box that says "I'll be using course credit" and the dept will let ISSS know the course that we will be expected to choose.
 </p>
+</div>
+</div>
 
-<div class="org-src-container">
-<pre class="src src-python">fig, ax = plt.subplots()
-ax.plot(np.linspace(0, 280, len(prob_density)), prob_density)
-plt.show()
-</pre>
+<div id="outline-container-orga6e9893" class="outline-2">
+<h2 id="orga6e9893">Is freelancing legal?</h2>
+<div class="outline-text-2" id="text-orga6e9893">
+<p>
+<b>NO</b>. Needs CPT authorization and related to major.
+</p>
 </div>
 </div>
-</div>
+
+<div id="outline-container-org2ff4339" class="outline-2">
+<h2 id="org2ff4339">Can show max 90 days of unemployment after EAD arrives</h2>
 </div>
 </div>
 <div id="postamble" class="status">
+<p class="date">Date: 2021-06-23</p>
 <p class="date">Created: 2021-06-26 Sat 16:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

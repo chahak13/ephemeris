@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-06-03 Thu 18:52 -->
+<!-- 2021-06-26 Sat 16:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mail in emacs - mu4e</title>
@@ -204,6 +204,7 @@
 <li><a href="#org3d6474a">Configuration</a>
 <ul>
 <li><a href="#org5b104bb">Retrieval and indexing mails</a></li>
+<li><a href="#orgf2a1464">Contexts</a></li>
 </ul>
 </li>
 </ul>
@@ -292,11 +293,80 @@ Using these variables, mu4e uses the shell command set in the <code>mu4e-get-mai
 </div>
 </div>
 </div>
+
+<div id="outline-container-orgf2a1464" class="outline-3">
+<h3 id="orgf2a1464">Contexts</h3>
+<div class="outline-text-3" id="text-orgf2a1464">
+<p>
+Contexts provide the useful ability to switch between various email accounts, based on the right context, or manually. Using this, we can dynamically switch between folders of different email accounts. An <code>mu4e-context</code> is a Lisp object with a few useful members:
+</p>
+<ul class="org-ul">
+<li><code>name</code>: The name of the context. e.g. work or private</li>
+<li><code>vars</code>: An association-list of variable settings for this account.</li>
+<li><code>match-func</code>: A function that takes a MSG message plist as argument and returns non-nil if this context matches the situation. mu4e uses the first context that matches.</li>
+</ul>
+
+<p>
+We can use these variables to set contexts in mu4e as follows:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(setq mu4e-contexts
+      (list
+       (make-mu4e-context
+	   :name "Private"
+	   :match-func (lambda (msg)
+			 (when msg
+			   (string-prefix-p "/chahakcr7" (mu4e-message-field msg :maildir))))
+	   :vars
+	   '(
+	     (user-mail-address . "chahakcr7@gmail.com")
+	     (user-full-name . "Chahak")
+	     (mu4e-drafts-folder . "/chahakcr7/[Gmail]/Drafts")
+	     (mu4e-sent-folder . "/chahakcr7/[Gmail]/Sent Mail")
+	     (mu4e-refile-folder . "/chahakcr7/[Gmail]/All Mail")
+	     (mu4e-trash-folder . "/chahakcr7/[Gmail]/Trash")
+	     ))
+       ;; Official Email
+       (make-mu4e-context
+	:name "Official"
+	:match-func (lambda (msg)
+		      (when msg
+			(string-prefix-p "/chahakmehta013" (mu4e-message-field msg :maildir))))
+	:vars
+	'(
+	  (user-mail-address . "chahak.mehta013@gmail.com")
+	  (user-full-name . "Chahak Mehta")
+	  (mu4e-drafts-folder . "/chahakmehta013/[Gmail]/Drafts")
+	  (mu4e-sent-folder . "/chahakmehta013/[Gmail]/Sent Mail")
+	  (mu4e-refile-folder . "/chahakmehta013/[Gmail]/All Mail")
+	  (mu4e-trash-folder . "/chahakmehta013/[Gmail]/Trash")
+	  ))
+
+       ;; UT Austin email
+       (make-mu4e-context
+	:name "UT Austin"
+	:match-func (lambda (msg)
+		      (when msg
+			(string-prefix-p "/chahakut" (mu4e-message-field msg :maildir))))
+	:vars
+	'(
+	  (user-mail-address . "chahak@utexas.edu")
+	  (user-full-name . "Chahak Mehta")
+	  (mu4e-drafts-folder . "/chahakut/[Gmail]/Drafts")
+	  (mu4e-sent-folder . "/chahakut/[Gmail]/Sent Mail")
+	  (mu4e-refile-folder . "/chahakut/[Gmail]/All Mail")
+	  (mu4e-trash-folder . "/chahakut/[Gmail]/Trash")
+	  ))))
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2021-05-30</p>
-<p class="date">Created: 2021-06-03 Thu 18:52</p>
+<p class="date">Created: 2021-06-26 Sat 16:47</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
