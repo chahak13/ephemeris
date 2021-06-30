@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-06-26 Sat 23:39 -->
+<!-- 2021-06-30 Wed 17:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>How to create art from math</title>
@@ -206,9 +206,9 @@ We'll be using the <code>numpy</code> and <code>matplotlib</code> modules for th
 </p>
 
 <div class="org-src-container">
-<pre class="src src-jupyter-python">import numpy as np
-import matplotlib.pyplot as plt
-# %matplotlib inline
+<pre class="src src-jupyter-python"><span style="color: #5317ac;">import</span> numpy <span style="color: #5317ac;">as</span> np
+<span style="color: #5317ac;">import</span> matplotlib.pyplot <span style="color: #5317ac;">as</span> plt
+<span style="color: #505050;"># </span><span style="color: #505050;">%matplotlib inline</span>
 </pre>
 </div>
 
@@ -217,14 +217,14 @@ First, some auxiliary functions to setup figures using matplotlib.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-jupyter-python">def create_fig(facecolor="#fee4a6", **kwargs):
-    fig, ax = plt.subplots(figsize=(7,7), **kwargs)
+<pre class="src src-jupyter-python"><span style="color: #5317ac;">def</span> <span style="color: #721045;">create_fig</span>(facecolor=<span style="color: #2544bb;">"#fee4a6"</span>, **kwargs):
+    <span style="color: #00538b;">fig</span>, <span style="color: #00538b;">ax</span> = plt.subplots(figsize=(7,7), **kwargs)
     ax.set_facecolor(facecolor)
-    for spine in ax.spines.keys():
-	ax.spines[spine].set_color(facecolor)
-	ax.set_xticks([])
-	ax.set_yticks([])
-    return fig, ax    
+    <span style="color: #5317ac;">for</span> spine <span style="color: #5317ac;">in</span> ax.spines.keys():
+        ax.spines[spine].set_color(facecolor)
+        ax.set_xticks([])
+        ax.set_yticks([])
+    <span style="color: #5317ac;">return</span> fig, ax    
 </pre>
 </div>
 
@@ -233,18 +233,18 @@ We want to see what happens when you provide mathematical transformations to see
 </p>
 
 <div class="org-src-container">
-<pre class="src src-jupyter-python">x = np.pi
-y = np.arange(-np.pi, np.pi, 0.1)
-X, Y = np.meshgrid(x, y)
+<pre class="src src-jupyter-python"><span style="color: #00538b;">x</span> = np.pi
+<span style="color: #00538b;">y</span> = np.arange(-np.pi, np.pi, 0.1)
+<span style="color: #00538b;">X</span>, <span style="color: #00538b;">Y</span> = np.meshgrid(x, y)
 
-fig, ax = create_fig()
-ax.scatter(X, Y, c='k', s=0.3)
-fig.savefig("./images/straight-line.png")
+<span style="color: #00538b;">fig</span>, <span style="color: #00538b;">ax</span> = create_fig()
+ax.scatter(X, Y, c=<span style="color: #2544bb;">'k'</span>, s=0.3)
+fig.savefig(<span style="color: #2544bb;">"./images/straight-line.png"</span>)
 </pre>
 </div>
 
 
-<div id="org256bfcf" class="figure">
+<div id="orgc4938f5" class="figure">
 <p><img src="./images/straight-line.png" alt="straight-line.png" />
 </p>
 </div>
@@ -254,16 +254,16 @@ This is a simple vertical line on the cartesian plane. We will now see what happ
 </p>
 
 <div class="org-src-container">
-<pre class="src src-jupyter-python">X_new = X + np.cos(Y)
-Y_new = Y + np.sin(Y)**2
-fig, ax = create_fig()
-ax.scatter(X_new, Y_new, c='k', s=0.3)
-fig.savefig("./images/perturbed-line.png")
+<pre class="src src-jupyter-python"><span style="color: #00538b;">X_new</span> = X + np.cos(Y)
+<span style="color: #00538b;">Y_new</span> = Y + np.sin(Y)**2
+<span style="color: #00538b;">fig</span>, <span style="color: #00538b;">ax</span> = create_fig()
+ax.scatter(X_new, Y_new, c=<span style="color: #2544bb;">'k'</span>, s=0.3)
+fig.savefig(<span style="color: #2544bb;">"./images/perturbed-line.png"</span>)
 </pre>
 </div>
 
 
-<div id="org10ddce1" class="figure">
+<div id="org70e7050" class="figure">
 <p><img src="./images/perturbed-line.png" alt="perturbed-line.png" />
 </p>
 </div>
@@ -273,18 +273,18 @@ As we can see, a simple sinusoidal transformation is enough to give a straight l
 </p>
 
 <div class="org-src-container">
-<pre class="src src-jupyter-python">x, y = np.arange(-np.pi, np.pi, 0.1), np.arange(-np.pi, np.pi, 0.1)
-X, Y = np.meshgrid(x, y)
-X_new = X + np.cos(Y)
-Y_new = Y + np.sin(Y)**2
-fig, ax = create_fig()
-ax.scatter(X_new, Y_new, c='k', s=0.3)
-fig.savefig("./images/multiline-pattern.png")
+<pre class="src src-jupyter-python"><span style="color: #00538b;">x</span>, <span style="color: #00538b;">y</span> = np.arange(-np.pi, np.pi, 0.1), np.arange(-np.pi, np.pi, 0.1)
+<span style="color: #00538b;">X</span>, <span style="color: #00538b;">Y</span> = np.meshgrid(x, y)
+<span style="color: #00538b;">X_new</span> = X + np.cos(Y)
+<span style="color: #00538b;">Y_new</span> = Y + np.sin(Y)**2
+<span style="color: #00538b;">fig</span>, <span style="color: #00538b;">ax</span> = create_fig()
+ax.scatter(X_new, Y_new, c=<span style="color: #2544bb;">'k'</span>, s=0.3)
+fig.savefig(<span style="color: #2544bb;">"./images/multiline-pattern.png"</span>)
 </pre>
 </div>
 
 
-<div id="org2e2cc49" class="figure">
+<div id="org50fa2ef" class="figure">
 <p><img src="./images/multiline-pattern.png" alt="multiline-pattern.png" />
 </p>
 </div>
@@ -294,14 +294,14 @@ Heyy! That looks almost like a curtain flap. Fairly interesting, if someone was 
 </p>
 
 <div class="org-src-container">
-<pre class="src src-jupyter-python">fig_p, ax_p = create_fig(facecolor="#fee4a6", **{"subplot_kw": {"projection": "polar"}})
-ax_p.scatter(X_new, Y_new, c='k', s=0.3)
-fig_p.savefig("./images/multiline-pattern-polar.png")
+<pre class="src src-jupyter-python"><span style="color: #00538b;">fig_p</span>, <span style="color: #00538b;">ax_p</span> = create_fig(facecolor=<span style="color: #2544bb;">"#fee4a6"</span>, **{<span style="color: #2544bb;">"subplot_kw"</span>: {<span style="color: #2544bb;">"projection"</span>: <span style="color: #2544bb;">"polar"</span>}})
+ax_p.scatter(X_new, Y_new, c=<span style="color: #2544bb;">'k'</span>, s=0.3)
+fig_p.savefig(<span style="color: #2544bb;">"./images/multiline-pattern-polar.png"</span>)
 </pre>
 </div>
 
 
-<div id="orgcb3053e" class="figure">
+<div id="org2cb11b2" class="figure">
 <p><img src="./images/multiline-pattern-polar.png" alt="multiline-pattern-polar.png" />
 </p>
 </div>
@@ -315,20 +315,20 @@ We will first see the effect it has in the cartesian system.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-jupyter-python">x, y = np.arange(-np.pi, np.pi, 0.1), np.arange(-np.pi, np.pi, 0.1)
-X, Y = np.meshgrid(x, y)
-rng = np.random.default_rng(seed=1)
+<pre class="src src-jupyter-python"><span style="color: #00538b;">x</span>, <span style="color: #00538b;">y</span> = np.arange(-np.pi, np.pi, 0.1), np.arange(-np.pi, np.pi, 0.1)
+<span style="color: #00538b;">X</span>, <span style="color: #00538b;">Y</span> = np.meshgrid(x, y)
+<span style="color: #00538b;">rng</span> = np.random.default_rng(seed=1)
 
 X_new = X + rng.uniform(1, -1, Y.shape[0]) * np.cos(Y)
 Y_new = Y + rng.uniform(1, -1, Y.shape[0]) * np.sin(Y)**2
-fig, ax = create_fig()
-ax.scatter(X_new, Y_new, c='k', s=0.3)
-fig.savefig("./images/multiline-random-cartesian.png")
+<span style="color: #00538b;">fig</span>, <span style="color: #00538b;">ax</span> = create_fig()
+ax.scatter(X_new, Y_new, c=<span style="color: #2544bb;">'k'</span>, s=0.3)
+fig.savefig(<span style="color: #2544bb;">"./images/multiline-random-cartesian.png"</span>)
 </pre>
 </div>
 
 
-<div id="orgbe75240" class="figure">
+<div id="org6e5d045" class="figure">
 <p><img src="./images/multiline-random-cartesian.png" alt="multiline-random-cartesian.png" />
 </p>
 </div>
@@ -338,14 +338,14 @@ Right, that looks almost like a nervous system or a cluster of wiring, depending
 </p>
 
 <div class="org-src-container">
-<pre class="src src-jupyter-python">fig_p, ax_p = create_fig(facecolor="#fee4a6", **{"subplot_kw": {"projection": "polar"}})
-ax_p.scatter(X_new, Y_new, c='k', s=0.3)
-fig_p.savefig("./images/multiline-random-polar.png")
+<pre class="src src-jupyter-python"><span style="color: #00538b;">fig_p</span>, <span style="color: #00538b;">ax_p</span> = create_fig(facecolor=<span style="color: #2544bb;">"#fee4a6"</span>, **{<span style="color: #2544bb;">"subplot_kw"</span>: {<span style="color: #2544bb;">"projection"</span>: <span style="color: #2544bb;">"polar"</span>}})
+ax_p.scatter(X_new, Y_new, c=<span style="color: #2544bb;">'k'</span>, s=0.3)
+fig_p.savefig(<span style="color: #2544bb;">"./images/multiline-random-polar.png"</span>)
 </pre>
 </div>
 
 
-<div id="orgde4ace0" class="figure">
+<div id="orgfeb01ba" class="figure">
 <p><img src="./images/multiline-random-polar.png" alt="multiline-random-polar.png" />
 </p>
 </div>
@@ -355,12 +355,12 @@ fig_p.savefig("./images/multiline-random-polar.png")
 </p>
 
 <p>
-Anyway, so this is the beginning of generating some curious generative art. Hopefully I'll get to animating these too. It would be fun to some day reach the level of <a href=20210619171154-aaronpenne_generative_art_a_collection_of_my_generative_artwork_mostly_with_processing_in_python_mode.html>aaronpenne - A collection of my generative artwork, mostly with Processing in Python mode</a> and <a href=20210619170508-software_katharina_brunner.html>Generative Art – Katharina Brunner</a> but for now, ciao!
+Anyway, so this is the beginning of generating some curious generative art. Hopefully I'll get to animating these too. It would be fun to some day reach the level of <a href="https://github.com/aaronpenne/generative_art">aaronpenne - A collection of my generative artwork, mostly with Processing in Python mod</a>e and <a href="https://katharinabrunner.de/software-portfolio/">Generative Art – Katharina Brunner</a> but for now, ciao!
 </p>
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2021-06-26</p>
-<p class="date">Created: 2021-06-26 Sat 23:39</p>
+<p class="date">Created: 2021-06-30 Wed 17:35</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
